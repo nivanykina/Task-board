@@ -1,0 +1,8 @@
+<app-toasts></app-toasts>
+<app-header></app-header>
+<div class="app-container" style="padding-top: 60px;">
+  <app-side-panel (toggle)="toggleSidePanel()"></app-side-panel>
+  <div class="content" [appToggleClass]="isCollapsed" className="collapsed">
+    <router-outlet></router-outlet>
+  </div>
+</div>

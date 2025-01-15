@@ -1,0 +1,30 @@
+<div class="input-container">
+  <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()" class="input-block">
+    <mat-form-field class="task-input-field">
+      <input
+        matInput
+        class="task-input"
+        formControlName="newTask"
+        [placeholder]="newTaskPlaceholder"
+        i18n-placeholder="@@newTaskPlaceholder"
+      />
+    </mat-form-field>
+    <mat-form-field class="task-input-field">
+      <textarea
+        matInput
+        class="task-input"
+        formControlName="newDescription"
+        [placeholder]="taskDescriptionPlaceholder"
+        i18n-placeholder="@@newDescriptionPlaceholder"
+      ></textarea>
+    </mat-form-field>
+    <app-button
+      [disabled]="addTaskForm.invalid"
+      [buttonClasses]="{ 'button--add': true }"
+      tooltipText="Add this task"
+      i18n-tooltipText="@@addTaskTooltip"
+    >
+      {{ addButtonTitle }}
+    </app-button>
+  </form>
+</div>

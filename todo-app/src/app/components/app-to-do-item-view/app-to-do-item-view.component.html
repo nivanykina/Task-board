@@ -1,0 +1,48 @@
+<div class="app-task-details">
+  <div *ngIf="task">
+    <h2>{{ task.text }}</h2>
+  </div>
+  <ng-container *ngIf="!isEditing; else editMode">
+    <div (dblclick)="enableEditing()" *ngIf="task" class="app-task-description">
+      <span>{{ task.description }}</span>
+    </div>
+  </ng-container>
+  <ng-template #editMode>
+    <form
+      [formGroup]="editTaskForm"
+      class="app-edit-task-form"
+      (ngSubmit)="saveTask()"
+    >
+      <div class="app-edit-fields">
+        <input
+          type="checkbox"
+          class="custom-checkbox"
+          formControlName="editStatus"
+        />
+        <mat-form-field class="app-edit-task-field">
+          <input
+            matInput
+            formControlName="editTask"
+            placeholder="{{ 'editTaskPlaceholder' | translate }}"
+          />
+        </mat-form-field>
+        <mat-form-field class="app-edit-task-field">
+          <textarea
+            matInput
+            formControlName="editDescription"
+            placeholder="{{ 'editDescriptionPlaceholder' | translate }}"
+          ></textarea>
+        </mat-form-field>
+        <div class="app-button-group app-edit-mode-buttons">
+          <button
+            type="submit"
+            class="app-button--save"
+            [disabled]="!editTaskForm.dirty || !editTaskForm.valid"
+          >
+            {{ 'saveButtonTitle' | translate }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</div>

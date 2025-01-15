@@ -1,0 +1,25 @@
+<div class="task-item">
+  <li
+    class="task-item"
+    (click)="toggleDescription($event)"
+    [appTooltip]="
+      selectedItemId === item.id ? hideDescriptionText : showDescriptionText
+    "
+  >
+    <span class="tooltip">{{
+      selectedItemId === item.id ? hideDescriptionText : showDescriptionText
+      }}</span>
+    <span>{{ item.text }}</span>
+  </li>
+  <textarea
+    *ngIf="selectedItemId === item.id"
+    class="task-description"
+    [(ngModel)]="item.description"
+  ></textarea>
+  <app-button
+    [title]="deleteButtonTitle"
+    [buttonClasses]="{ 'button--delete': true }"
+    (click)="deleteItem($event)"
+    [tooltipText]="'deleteTaskTooltip' | translate"
+  ></app-button>
+</div>

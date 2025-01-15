@@ -1,0 +1,9 @@
+<button
+  class="button-common"
+  [ngClass]="buttonClasses"
+  [disabled]="disabled"
+  (click)="onClick()"
+  [appTooltip]="tooltipText"
+>
+  <ng-content></ng-content>
+</button>

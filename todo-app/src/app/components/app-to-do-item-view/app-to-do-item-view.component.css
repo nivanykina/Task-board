@@ -1,0 +1,92 @@
+.app-task-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto 20px;
+  box-sizing: border-box;
+  max-width: 700px;
+  text-align: left;
+}
+
+.app-task-details h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333333;
+}
+
+.app-task-details p {
+  font-size: 16px;
+  color: #666666;
+}
+
+.app-task-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  background-color: #f9f9f9;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  min-width: 200px;
+  min-height: 56px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-wrap: normal;
+  text-align: left;
+}
+
+.app-task-description.ng-star-inserted {
+  height: auto;
+  text-align: left;
+}
+
+.app-edit-task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.app-edit-fields {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  align-items: center;
+}
+
+.app-button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.app-button-group .app-button--save {
+  background-color: #008000;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  min-height: 56px;
+}
+
+.app-button-group .app-button--save:hover {
+  background-color: #006400;
+}
+
+.app-button-group .app-button--save:active {
+  background-color: #004d00;
+}
+
+.app-button-group .app-button--save:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

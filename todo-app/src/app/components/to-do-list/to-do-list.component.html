@@ -1,0 +1,44 @@
+<app-task-control-panel
+  (filterChange)="applyFilter($event)"
+></app-task-control-panel>
+<div class="outer-container">
+  <div class="task-list-container">
+    <h1 class="title">{{ 'title' | translate }}</h1>
+    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+    <ul class="task-list" *ngIf="!isLoading">
+      <li
+        *ngFor="let task of filteredTasks$ | async; trackBy: trackByTaskId"
+        [ngClass]="{ selected: task.id === selectedItemId }"
+        appClick
+        (singleClick)="handleClick(task.id, $event)"
+      >
+        <div class="task-item">
+          <form class="view-task-form">
+            <input
+              type="checkbox"
+              class="custom-checkbox"
+              [checked]="task.status"
+              (change)="toggleStatus(task)"
+            />
+            <span class="task-text">{{ task.text }}</span>
+            <div class="button-container">
+              <app-button
+                [buttonClasses]="{ 'button--delete': true }"
+                (click)="deleteTask(task.id, $event)"
+                [tooltipText]="'deleteTaskTooltip' | translate"
+              >
+                {{ 'deleteButtonTitle' | translate }}
+              </app-button>
+            </div>
+          </form>
+        </div>
+      </li>
+    </ul>
+    <app-todo-create-item
+      (taskCreated)="onTaskCreated($event)"
+    ></app-todo-create-item>
+  </div>
+  <div class="task-details-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
