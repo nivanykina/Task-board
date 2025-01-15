@@ -1,0 +1,104 @@
+.button-common {
+  padding: 0 20px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  position: relative;
+}
+
+.button-common:hover {
+  filter: brightness(80%);
+}
+
+.button-common:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: #bdc3c7;
+}
+
+.tooltip {
+  position: absolute;
+  background: #4242428f;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  display: none;
+  z-index: 1000;
+}
+
+.tooltip.show {
+  display: block;
+}
+
+.button-common .tooltip {
+  width: 100%;
+  text-align: center;
+}
+
+.app-container {
+  display: flex;
+  background: #f0f0f0;
+}
+
+.side-panel {
+  width: 250px;
+  transition: width 0.3s;
+}
+
+.side-panel.collapsed {
+  width: 50px;
+}
+
+.content {
+  flex-grow: 1;
+  margin-left: 200px;
+  transition: margin-left 0.3s;
+}
+
+.side-panel.collapsed + .content {
+  margin-left: 50px;
+}
+
+@media (max-width: 768px) {
+  .side-panel {
+    width: 150px;
+  }
+
+  .side-panel.collapsed {
+    width: 40px;
+  }
+
+  .content {
+    margin-left: 150px;
+  }
+
+  .side-panel.collapsed + .content {
+    margin-left: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .side-panel {
+    width: 100px;
+  }
+
+  .side-panel.collapsed {
+    width: 30px;
+  }
+
+  .content {
+    margin-left: 100px;
+  }
+
+  .side-panel.collapsed + .content {
+    margin-left: 30px;
+  }
+}

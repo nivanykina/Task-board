@@ -1,0 +1,21 @@
+.page-not-found {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.page-not-found h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.page-not-found p {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.page-not-found a {
+  font-size: 1.2em;
+  color: #007bff;
+  text-decoration: none;
+  pointer-events: auto;
+}

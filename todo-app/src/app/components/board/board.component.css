@@ -1,0 +1,36 @@
+.board-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.column {
+  flex: 1;
+  flex-shrink: 0;
+  max-width: 30%;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
+.task-list {
+  min-height: 200px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.task {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  cursor: move;
+}

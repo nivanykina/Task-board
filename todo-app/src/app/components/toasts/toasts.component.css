@@ -1,0 +1,44 @@
+.toast-container {
+  position: fixed;
+  top: 75px;
+  right: 20px;
+  z-index: 1000;
+  transition: all 0.5s ease-in-out;
+}
+
+.toast {
+  color: #ffffff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeIn 0.5s forwards;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toast-success {
+  background-color: rgba(0, 128, 0, 0.75);
+}
+
+.toast-error {
+  background-color: rgba(255, 0, 0, 0.75);
+}
+
+.toast button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

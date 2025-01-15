@@ -1,0 +1,20 @@
+<div class="language-switcher">
+  <button
+    (click)="switchLanguage('en')"
+    [ngClass]="{ selected: isCurrentLanguage('en') | async }"
+  >
+    <img src="assets/flags/en.png" alt="English" />
+  </button>
+  <button
+    (click)="switchLanguage('ru')"
+    [ngClass]="{ selected: isCurrentLanguage('ru') | async }"
+  >
+    <img src="assets/flags/ru.png" alt="Русский" />
+  </button>
+  <button
+    (click)="switchLanguage('sr')"
+    [ngClass]="{ selected: isCurrentLanguage('sr') | async }"
+  >
+    <img src="assets/flags/sr.png" alt="Српски" />
+  </button>
+</div>

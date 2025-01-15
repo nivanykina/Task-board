@@ -1,0 +1,49 @@
+.task-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #cccccc;
+  background-color: #f9f9f9;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.task-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #cccccc;
+  background-color: #f9f9f9;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.task-item:hover .tooltip {
+  display: block;
+}
+
+.tooltip {
+  position: absolute;
+  background: #333333;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  display: none;
+  z-index: 1000;
+}
+
+.button--delete {
+  margin-left: 10px;
+}

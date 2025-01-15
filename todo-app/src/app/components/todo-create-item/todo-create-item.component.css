@@ -1,0 +1,29 @@
+.input-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.input-block {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.task-input-field {
+  flex: 1;
+  min-height: 56px;
+}
+
+.task-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #666666;
+  border-radius: 4px;
+  min-height: 56px;
+  resize: vertical;
+  box-sizing: border-box;
+}

@@ -1,0 +1,9 @@
+@import '../../../app/app.component.css';
+
+.button--add {
+  background-color: #008000;
+}
+
+.button--delete {
+  background-color: #FF0000;
+}

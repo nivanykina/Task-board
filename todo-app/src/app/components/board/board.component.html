@@ -1,0 +1,54 @@
+<div *ngIf="isLoading">
+  <app-loading-spinner class="loading-spinner"></app-loading-spinner>
+</div>
+<div *ngIf="!isLoading">
+  <div class="board-container" cdkDropListGroup>
+    <div class="column" id="backlog">
+      <h2>{{ 'backlogTitle' | translate }}</h2>
+      <div
+        cdkDropList
+        id="backlog"
+        [cdkDropListData]="backlogTasks"
+        [cdkDropListConnectedTo]="['in-progress', 'completed']"
+        class="task-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="task" *ngFor="let task of backlogTasks" cdkDrag>
+          {{ task.text }}
+        </div>
+      </div>
+    </div>
+
+    <div class="column" id="in-progress">
+      <h2>{{ 'inProgressTitle' | translate }}</h2>
+      <div
+        cdkDropList
+        id="in-progress"
+        [cdkDropListData]="inProgressTasks"
+        [cdkDropListConnectedTo]="['backlog', 'completed']"
+        class="task-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="task" *ngFor="let task of inProgressTasks" cdkDrag>
+          {{ task.text }}
+        </div>
+      </div>
+    </div>
+
+    <div class="column" id="completed">
+      <h2>{{ 'completedTitle' | translate }}</h2>
+      <div
+        cdkDropList
+        id="completed"
+        [cdkDropListData]="completedTasks"
+        [cdkDropListConnectedTo]="['backlog', 'in-progress']"
+        class="task-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="task" *ngFor="let task of completedTasks" cdkDrag>
+          {{ task.text }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
