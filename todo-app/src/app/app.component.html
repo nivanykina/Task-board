@@ -1,8 +1,17 @@
 <app-toasts></app-toasts>
-<app-header></app-header>
-<div class="app-container" style="padding-top: 60px;">
-  <app-side-panel (toggle)="toggleSidePanel()"></app-side-panel>
-  <div class="content" [appToggleClass]="isCollapsed" className="collapsed">
+
+<div *ngIf="showHeader">
+  <app-header></app-header>
+</div>
+
+<div class="app-container" [style.padding-top.px]="showHeader ? 60 : 0">
+  <div *ngIf="showSidebar">
+    <app-side-panel
+      (toggle)="toggleSidePanel()"
+      [class.collapsed]="isCollapsed"
+    ></app-side-panel>
+  </div>
+  <div class="content" [appToggleClass]="isCollapsed" className="collapsed-content">
     <router-outlet></router-outlet>
   </div>
 </div>

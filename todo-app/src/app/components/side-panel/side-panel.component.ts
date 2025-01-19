@@ -4,6 +4,8 @@ import {
   OnDestroy,
   OnInit,
   Output,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -17,6 +19,7 @@ import { takeUntil, tap } from 'rxjs/operators';
   imports: [CommonModule, RouterModule],
   templateUrl: './side-panel.component.html',
   styleUrls: ['./side-panel.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidePanelComponent implements OnInit, OnDestroy {
   @Output() toggle = new EventEmitter<void>();
@@ -26,14 +29,20 @@ export class SidePanelComponent implements OnInit, OnDestroy {
   backlogLinkText: string = '';
   boardLinkText: string = '';
 
-  constructor(private translationService: TranslationService) {}
+  constructor(
+    private translationService: TranslationService,
+    private changeDetector: ChangeDetectorRef,
+  ) {}
 
   ngOnInit() {
     this.translationService.currentLang$
       .pipe(
         takeUntil(this.destroy$),
         tap({
-          next: () => this.updateTranslations(),
+          next: () => {
+            this.updateTranslations();
+            this.changeDetector.markForCheck();
+          },
           error: (err) => console.error('Language change error:', err),
         }),
       )
@@ -50,6 +59,7 @@ export class SidePanelComponent implements OnInit, OnDestroy {
         tap({
           next: (text: string) => {
             this.backlogLinkText = text;
+            this.changeDetector.markForCheck();
           },
           error: (err) =>
             console.error('Translation error for tasksListTitle:', err),
@@ -64,6 +74,7 @@ export class SidePanelComponent implements OnInit, OnDestroy {
         tap({
           next: (text: string) => {
             this.boardLinkText = text;
+            this.changeDetector.markForCheck();
           },
           error: (err) =>
             console.error('Translation error for boardTitle:', err),
@@ -73,8 +84,11 @@ export class SidePanelComponent implements OnInit, OnDestroy {
   }
 
   togglePanel(): void {
-    this.isCollapsed = !this.isCollapsed;
-    this.toggle.emit();
+    setTimeout(() => {
+      this.isCollapsed = !this.isCollapsed;
+      this.changeDetector.detectChanges();
+      this.toggle.emit();
+    }, 100);
   }
 
   ngOnDestroy(): void {

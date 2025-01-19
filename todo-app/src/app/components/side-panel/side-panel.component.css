@@ -1,10 +1,11 @@
 .side-panel {
-  width: 150px;
+  width: 200px;
   position: fixed;
   top: 60px;
   left: 0;
   height: calc(100% - 60px);
-  background-color: #f8f9fa;
+  background-color: #2a2a2a;
+  color: var(--text-color);
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   transition: width 0.3s;
@@ -16,6 +17,7 @@
 
 .side-panel nav {
   margin-top: 10px;
+  padding-top: 60px;
 }
 
 .side-panel nav ul {
@@ -29,24 +31,25 @@
   position: relative;
   width: 100%;
   box-sizing: border-box;
-}
-
-.side-panel nav ul li:hover {
-  background-color: #87cefa;
-  border-radius: 4px;
+  padding: 0;
 }
 
 .side-panel nav ul li a {
   display: block;
   text-decoration: none;
-  padding: 10px;
-  color: #333;
+  padding: 10px 20px;
+  color: var(--text-color);
   font-weight: bold;
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.side-panel nav ul li:hover {
+  background-color: #87cefa;
+  border-radius: 4px;
 }
 
 .side-panel.collapsed nav ul li a {
@@ -64,7 +67,9 @@
   cursor: pointer;
   font-size: 18px;
   transition: color 0.3s;
+  color: var(--text-color);
   padding: 5px;
+  z-index: 1000;
 }
 
 .toggle-button:hover {

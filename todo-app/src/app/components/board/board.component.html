@@ -2,51 +2,53 @@
   <app-loading-spinner class="loading-spinner"></app-loading-spinner>
 </div>
 <div *ngIf="!isLoading">
+  <app-task-control-panel
+    [filterOptions]="filterOptions"
+    (filterChange)="applyFilter($event)"
+  ></app-task-control-panel>
   <div class="board-container" cdkDropListGroup>
     <div class="column" id="backlog">
-      <h2>{{ 'backlogTitle' | translate }}</h2>
+      <h2>{{ backlogTitle }}</h2>
       <div
         cdkDropList
         id="backlog"
-        [cdkDropListData]="backlogTasks"
+        [cdkDropListData]="filteredTasks['backlogTasks']"
         [cdkDropListConnectedTo]="['in-progress', 'completed']"
         class="task-list"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="task" *ngFor="let task of backlogTasks" cdkDrag>
-          {{ task.text }}
+        <div class="task" *ngFor="let task of filteredTasks['backlogTasks']" cdkDrag>
+          {{ task.name }}
         </div>
       </div>
     </div>
-
     <div class="column" id="in-progress">
-      <h2>{{ 'inProgressTitle' | translate }}</h2>
+      <h2>{{ inProgressTitle }}</h2>
       <div
         cdkDropList
         id="in-progress"
-        [cdkDropListData]="inProgressTasks"
+        [cdkDropListData]="filteredTasks['inProgressTasks']"
         [cdkDropListConnectedTo]="['backlog', 'completed']"
         class="task-list"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="task" *ngFor="let task of inProgressTasks" cdkDrag>
-          {{ task.text }}
+        <div class="task" *ngFor="let task of filteredTasks['inProgressTasks']" cdkDrag>
+          {{ task.name }}
         </div>
       </div>
     </div>
-
     <div class="column" id="completed">
-      <h2>{{ 'completedTitle' | translate }}</h2>
+      <h2>{{ completedTitle }}</h2>
       <div
         cdkDropList
         id="completed"
-        [cdkDropListData]="completedTasks"
+        [cdkDropListData]="filteredTasks['completedTasks']"
         [cdkDropListConnectedTo]="['backlog', 'in-progress']"
         class="task-list"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="task" *ngFor="let task of completedTasks" cdkDrag>
-          {{ task.text }}
+        <div class="task" *ngFor="let task of filteredTasks['completedTasks']" cdkDrag>
+          {{ task.name }}
         </div>
       </div>
     </div>

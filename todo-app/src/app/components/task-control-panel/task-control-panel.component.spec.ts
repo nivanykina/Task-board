@@ -8,9 +8,8 @@ describe('TaskControlPanelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TaskControlPanelComponent]
-    })
-    .compileComponents();
+      imports: [TaskControlPanelComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TaskControlPanelComponent);
     component = fixture.componentInstance;

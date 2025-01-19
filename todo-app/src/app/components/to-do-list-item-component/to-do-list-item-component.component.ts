@@ -14,6 +14,7 @@ import { ClickDirective } from '../../shared/click.directive';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { Subscription, lastValueFrom } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { Task } from '../../services/todo.service';
 
 @Component({
   selector: 'app-to-do-list-item',
@@ -30,9 +31,9 @@ import { tap, catchError } from 'rxjs/operators';
   styleUrls: ['./to-do-list-item-component.component.css'],
 })
 export class ToDoListItemComponent implements OnInit, OnDestroy {
-  @Input() item!: { id: number; text: string; description: string };
-  @Input() selectedItemId!: number | null;
-  @Output() delete = new EventEmitter<number>();
+  @Input() item!: Task;
+  @Input() selectedItemId!: string | null;
+  @Output() delete = new EventEmitter<string>();
   public deleteButtonTitle: string = '';
   public showDescriptionText: string = '';
   public hideDescriptionText: string = '';

@@ -6,6 +6,8 @@ import {
   Renderer2,
   OnDestroy,
 } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { firstValueFrom } from 'rxjs';
 
 @Directive({
   selector: '[appTooltip]',
@@ -18,10 +20,11 @@ export class TooltipDirective implements OnDestroy {
   constructor(
     private el: ElementRef,
     private renderer: Renderer2,
+    private translate: TranslateService,
   ) {}
 
-  @HostListener('mouseenter') onMouseEnter() {
-    this.showTooltip();
+  @HostListener('mouseenter') async onMouseEnter() {
+    await this.showTooltip();
   }
 
   @HostListener('mouseleave') onMouseLeave() {
@@ -36,18 +39,18 @@ export class TooltipDirective implements OnDestroy {
     }
   }
 
-  private setTooltipContent() {
+  private async setTooltipContent() {
     const message = this.el.nativeElement.disabled
-      ? 'Fill the fields'
+      ? await firstValueFrom(this.translate.get('fillFieldsTooltip'))
       : this.tooltipText;
     const background = this.el.nativeElement.disabled ? '#4242428f' : '#333';
     this.renderer.setStyle(this.tooltipElement, 'background', background);
     this.renderer.setProperty(this.tooltipElement, 'innerText', message);
   }
 
-  private showTooltip() {
+  private async showTooltip() {
     this.createTooltip();
-    this.setTooltipContent();
+    await this.setTooltipContent();
     if (this.tooltipElement) {
       this.renderer.setStyle(this.tooltipElement, 'display', 'block');
       const hostPos = this.el.nativeElement.getBoundingClientRect();

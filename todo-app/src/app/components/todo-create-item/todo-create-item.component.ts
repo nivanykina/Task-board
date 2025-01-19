@@ -16,14 +16,17 @@ import {
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 import { ButtonComponent } from '../button/button.component';
 import { TodoService, Task } from '../../services/todo.service';
 import { ErrorHandlerService } from '../../services/error-handler.service';
 import { v4 as uuidv4 } from 'uuid';
-import { TaskCreate } from './task-create.interface';
 import { Subscription, lastValueFrom } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-todo-create-item',
@@ -33,6 +36,8 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
     ButtonComponent,
     TranslateModule,
   ],
@@ -41,11 +46,12 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoCreateItemComponent implements OnInit, OnDestroy {
-  @Output() taskCreated = new EventEmitter<TaskCreate>();
+  @Output() taskCreated = new EventEmitter<Task>();
   public addTaskForm: FormGroup;
   public addButtonTitle: string = '';
   public newTaskPlaceholder: string = '';
   public taskDescriptionPlaceholder: string = '';
+  public users: User[] = [];
   private subscriptions: Subscription = new Subscription();
 
   constructor(
@@ -54,15 +60,24 @@ export class TodoCreateItemComponent implements OnInit, OnDestroy {
     private errorHandler: ErrorHandlerService,
     private translate: TranslateService,
     private cdr: ChangeDetectorRef,
+    private authService: AuthService,
   ) {
     this.addTaskForm = this.fb.group({
-      newTask: ['', Validators.required],
-      newDescription: ['', Validators.required],
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      status: ['backlogTitle', Validators.required],
+      estimate: [0, Validators.required],
+      assignee: ['', Validators.required],
+      reporter: ['', Validators.required],
+      labels: [''],
+      sprint: [''],
+      priority: ['Low', Validators.required],
     });
   }
 
   async ngOnInit(): Promise<void> {
     await this.setTranslations();
+    this.loadUsers();
     this.subscriptions.add(
       this.translate.onLangChange
         .pipe(
@@ -97,23 +112,43 @@ export class TodoCreateItemComponent implements OnInit, OnDestroy {
     }
   }
 
+  private loadUsers(): void {
+    const usersSubscription = this.authService.getUsers().pipe(
+      tap((users) => {
+        this.users = users;
+        this.cdr.markForCheck();
+      }),
+      catchError((err) => {
+        console.error('Failed to load users:', err);
+        return [];
+      })
+    ).subscribe();
+
+    this.subscriptions.add(usersSubscription);
+  }
+
   public onSubmit(): void {
     if (this.addTaskForm.valid) {
       const newTask: Task = {
         id: uuidv4(),
-        text: this.addTaskForm.value.newTask.trim(),
-        description: this.addTaskForm.value.newDescription.trim(),
-        status: undefined,
+        name: this.addTaskForm.value.name.trim(),
+        description: this.addTaskForm.value.description.trim(),
+        status: this.addTaskForm.value.status,
+        estimate: this.addTaskForm.value.estimate,
+        assignee: this.addTaskForm.value.assignee,
+        reporter: this.addTaskForm.value.reporter,
+        labels: this.addTaskForm.value.labels
+          .split(',')
+          .map((label: string) => label.trim()),
+        sprint: this.addTaskForm.value.sprint,
+        priority: this.addTaskForm.value.priority,
       };
       const addTaskSubscription = this.todoService
         .addTask(newTask)
         .pipe(
           tap({
             next: (addedTask) => {
-              this.taskCreated.emit({
-                text: addedTask.text,
-                description: addedTask.description,
-              });
+              this.taskCreated.emit(addedTask);
               this.addTaskForm.reset();
               this.cdr.markForCheck();
             },

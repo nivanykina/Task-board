@@ -9,7 +9,7 @@ import { provideEffects } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { taskReducer } from './app/store/reducers/task.reducer';
 import { TaskEffects } from './app/store/effects/task.effects';
-import { environment } from './environments/environment';
+import { environment } from './environments/environment.local';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';

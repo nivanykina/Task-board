@@ -1,0 +1,24 @@
+<div class="app-container">
+  <div class="user-selection-container main-content">
+    <h2>Выбор пользователя</h2>
+    <div class="user-cards">
+      <div
+        *ngFor="let user of users"
+        class="user-card"
+        (click)="selectUser(user)"
+      >
+        <img src="assets/avatar.png" alt="Avatar" />
+        <p>{{ user.name }}</p>
+        <p>{{ user.login }}</p>
+      </div>
+    </div>
+    <div class="buttons">
+      <button (click)="navigateTo('add')">Добавить нового пользователя</button>
+      <button (click)="navigateTo('delete')">Удалить пользователя</button>
+      <button class="ya-auth-button" (click)="loginWithYandex()">
+        <img src="assets/yandex-icon.svg" alt="Yandex Icon" class="ya-icon" />
+        Войти через Яндекс
+      </button>
+    </div>
+  </div>
+</div>
