@@ -128,6 +128,7 @@ export class AppToDoItemViewComponent implements OnInit, OnDestroy {
         await this.setTranslations();
         this.cdr.detectChanges();
       });
+    this.subscribeToTaskChanges();
   }
 
   ngOnDestroy(): void {
@@ -180,12 +181,15 @@ export class AppToDoItemViewComponent implements OnInit, OnDestroy {
     switch (translatedStatus) {
       case 'TASK.STATUS_COMPLETED':
       case 'Завершено':
+      case 'completedTitle':
         return 'completedTitle';
       case 'TASK.STATUS_IN_PROGRESS':
       case 'В процессе':
+      case 'inProgressTitle':
         return 'inProgressTitle';
       case 'TASK.STATUS_BACKLOG':
       case 'Отложенные':
+      case 'backlogTitle':
         return 'backlogTitle';
       default:
         return 'backlogTitle';
@@ -237,7 +241,7 @@ export class AppToDoItemViewComponent implements OnInit, OnDestroy {
           editSprint: this.task.sprint,
           editPriority: this.task.priority,
         });
-        this.cdr.detectChanges();
+        this.cdr.markForCheck();
       })
     ).subscribe({
       error: (err) => this.errorHandler.handleError(err),
@@ -253,6 +257,15 @@ export class AppToDoItemViewComponent implements OnInit, OnDestroy {
       });
   }
 
+  private subscribeToTaskChanges(): void {
+    this.todoService.tasks$.pipe(takeUntil(this.destroy$)).subscribe((tasks: Task[]) => {
+      const task = tasks.find(t => t.id === this.task.id);
+      if (task) {
+        this.task = task;
+        this.cdr.markForCheck();
+      }
+    });
+  }
   public onInputChanged(): void {
     this.editTaskForm.markAsDirty();
   }
@@ -267,7 +280,8 @@ export class AppToDoItemViewComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const status = this.revertStatusKey(this.editTaskForm.get('editStatus')?.value);
+    const statusFormValue = this.editTaskForm.get('editStatus')?.value;
+    const status = this.revertStatusKey(statusFormValue);
 
     const updatedTask: Task = {
       id: this.task.id,
@@ -297,10 +311,11 @@ export class AppToDoItemViewComponent implements OnInit, OnDestroy {
         this.editTaskForm.markAsPristine();
         this.cdr.detectChanges();
       },
-      error: (err) => this.errorHandler.handleError(err),
+      error: (err) => {
+        this.errorHandler.handleError(err);
+      },
     });
   }
-
 
   public cancelEditing(): void {
     this.isEditing = false;

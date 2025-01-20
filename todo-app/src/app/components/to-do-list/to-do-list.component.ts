@@ -178,9 +178,6 @@ export class ToDoListComponent implements OnInit, OnDestroy {
     });
   }
 
-
-
-
   private filterTasks(): Observable<Task[]> {
     return combineLatest([this.tasks$, this.filterSubject]).pipe(
       map(([tasks, filters]) => {
@@ -211,7 +208,7 @@ export class ToDoListComponent implements OnInit, OnDestroy {
 
   public onTaskCreated(task: Task): void {
     this.toastService.showSuccess(
-      this.translate.instant('taskCreatedSuccess', { task: task['editTask'] }),
+      this.translate.instant('taskCreatedSuccess', { task: task.name }),
     );
     this.tasks$ = this.todoService.tasks$;
     this.applyFilter(this.filterSubject.value);
@@ -254,11 +251,11 @@ export class ToDoListComponent implements OnInit, OnDestroy {
   public toggleStatus(task: Task, event: Event): void {
     const isChecked = (event.target as HTMLInputElement).checked;
     const updatedStatus: 'backlogTitle' | 'inProgressTitle' | 'completedTitle' =
-      isChecked ? 'completedTitle' : (task['editStatus'] === 'completedTitle' ? 'inProgressTitle' : 'backlogTitle');
+      isChecked ? 'completedTitle' : (task.status === 'completedTitle' ? 'inProgressTitle' : 'backlogTitle');
 
     const updatedTask: Task = {
       ...task,
-      editStatus: updatedStatus
+      status: updatedStatus
     };
 
     this.todoService.updateTask(updatedTask).pipe(
@@ -270,6 +267,7 @@ export class ToDoListComponent implements OnInit, OnDestroy {
             : this.translate.instant('taskIncomplete');
           this.toastService.showSuccess(message);
           this.applyFilter(this.filterSubject.value);
+          this.cdr.markForCheck();
         },
         error: (err) => {
           this.errorHandler.handleError(err);
@@ -277,6 +275,7 @@ export class ToDoListComponent implements OnInit, OnDestroy {
       }),
     ).subscribe();
   }
+
 
   public trackByTaskId(index: number, task: Task): string {
     return task.id;

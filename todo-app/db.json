@@ -42,6 +42,20 @@
       ],
       "sprint": "3",
       "priority": "High"
+    },
+    {
+      "id": "e6a94a20-073c-4a9c-b10c-f7607abfb9a1",
+      "name": "Я приготовил борщ",
+      "description": "С помпушками",
+      "status": "completedTitle",
+      "estimate": "12",
+      "assignee": "6d03c7ba-ba22-48d1-8a60-7e6ab2662a5f",
+      "reporter": "6d03c7ba-ba22-48d1-8a60-7e6ab2662a5f",
+      "labels": [
+        "еда"
+      ],
+      "sprint": "12",
+      "priority": "Low"
     }
   ],
   "users": [
@@ -66,11 +80,7 @@
       "login": "Yummy"
     },
     {
-      "id": "8eb65463-c47c-421e-a8b8-bd177c1ff964",
-      "name": "Анастасия Иваныкина"
-    },
-    {
-      "id": "da711db7-cb2e-4e57-9442-9d6bef26fd1d",
+      "id": "e1bb7387-7cf3-4d8f-a8e1-ff71dbcabf23",
       "name": "Анастасия Иваныкина"
     }
   ],

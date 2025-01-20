@@ -9,10 +9,12 @@ export class LoaderService {
   loaderState$ = this.loaderSubject.asObservable();
 
   showLoader(): void {
+    console.log('showLoader called');
     this.loaderSubject.next(true);
   }
 
   hideLoader(): void {
+    console.log('hideLoader called');
     this.loaderSubject.next(false);
   }
 }

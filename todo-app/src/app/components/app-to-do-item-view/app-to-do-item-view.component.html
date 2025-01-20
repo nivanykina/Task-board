@@ -9,10 +9,7 @@
       <p>{{ 'TASK.REPORTER' | translate }}: {{ getReporterName(task.reporter) }}</p>
       <p>{{ 'TASK.LABELS' | translate }}: {{ task.labels.join(', ') }}</p>
       <p>{{ 'TASK.SPRINT' | translate }}: {{ task.sprint }}</p>
-      <p>
-        {{ 'TASK.PRIORITY' | translate }}:
-        {{ 'TASK.PRIORITY_' + task.priority.toUpperCase() | translate }}
-      </p>
+      <p>{{ 'TASK.PRIORITY' | translate }}: {{ 'TASK.PRIORITY_' + task.priority.toUpperCase() | translate }}</p>
     </div>
     <img src="assets/pencil.png" alt="Edit" class="app-task-edit-icon" (click)="enableEditing()" />
   </ng-container>

@@ -27,6 +27,7 @@ import { tap, catchError } from 'rxjs/operators';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../interfaces/user.interface';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-todo-create-item',
@@ -61,6 +62,7 @@ export class TodoCreateItemComponent implements OnInit, OnDestroy {
     private translate: TranslateService,
     private cdr: ChangeDetectorRef,
     private authService: AuthService,
+    private toastService: ToastService
   ) {
     this.addTaskForm = this.fb.group({
       name: ['', Validators.required],
@@ -73,6 +75,7 @@ export class TodoCreateItemComponent implements OnInit, OnDestroy {
       sprint: [''],
       priority: ['Low', Validators.required],
     });
+    this.toastService = toastService;
   }
 
   async ngOnInit(): Promise<void> {

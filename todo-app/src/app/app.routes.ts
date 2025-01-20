@@ -17,7 +17,7 @@ export const routes: Routes = [
     component: ToDoListComponent,
     children: [{ path: ':id', component: AppToDoItemViewComponent }],
   },
-  { path: 'backlog', component: ToDoListComponent },
+  { path: 'backlog', component: ToDoListComponent, canActivate: [PreloadGuard] },
   { path: 'board', component: BoardComponent, canActivate: [PreloadGuard] },
   { path: 'calendar', component: CalendarComponent, canActivate: [PreloadGuard] },
   { path: 'auth/yandex/callback', component: AuthCallbackComponent },

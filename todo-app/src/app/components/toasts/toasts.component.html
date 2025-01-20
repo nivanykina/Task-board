@@ -1,8 +1,8 @@
 <div class="toast-container">
   <div
     *ngFor="let toast of toasts; let i = index"
-    [ngClass]="getToastClass(toast)"
     class="toast"
+    [ngClass]="getToastClass(toast)"
   >
     {{ toast }}
     <button (click)="removeToast(i)">✖</button>

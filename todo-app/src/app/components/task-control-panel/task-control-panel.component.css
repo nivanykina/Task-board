@@ -10,11 +10,11 @@
   justify-content: flex-start;
   align-items: center;
   margin-top: 10px;
-  gap: 10px;
+  gap: 5px;
 }
 
 .filter-item {
-  flex: 1 1 calc(25% - 20px);
-  max-width: calc(25% - 20px);
+  flex: 1 1 calc(25% - 10px);
+  max-width: calc(25% - 10px);
   box-sizing: border-box;
 }

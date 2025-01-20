@@ -1,26 +1,26 @@
 <div *ngIf="action === 'add'" class="user-management-container">
-  <h2>Добавить нового пользователя</h2>
+  <h2>{{ 'ADD_USER' | translate }}</h2>
   <form [formGroup]="userForm" (ngSubmit)="addUser()">
-    <input formControlName="name" placeholder="ФИО" />
-    <input formControlName="login" placeholder="Логин" />
-    <button type="submit">Добавить</button>
+    <input formControlName="name" placeholder="{{ 'fullName' | translate }}" />
+    <input formControlName="login" placeholder="{{ 'login' | translate }}" />
+    <button type="submit">{{ 'addUserButtonTitle' | translate }}</button>
   </form>
 </div>
 
 <div *ngIf="action === 'delete'" class="user-management-container">
-  <h2>Удалить пользователя</h2>
+  <h2>{{ 'DELETE_USER' | translate }}</h2>
   <ul>
     <li *ngFor="let user of users">
       {{ user.name }} ({{ user.login }})
-      <button (click)="confirmDelete(user)">Удалить</button>
+      <button (click)="confirmDelete(user)">{{ 'deleteButtonTitle' | translate }}</button>
     </li>
   </ul>
 </div>
 
 <div *ngIf="showConfirmModal" class="modal">
   <div class="modal-content">
-    <p>Вы уверены, что хотите удалить {{ userToDelete?.name }}?</p>
-    <button (click)="deleteUser()">Да</button>
-    <button (click)="closeModal()">Нет</button>
+    <p>{{ 'CONFIRM_DELETE' | translate: { name: userToDelete?.name } }}</p>
+    <button (click)="deleteUser()">{{ 'YES' | translate }}</button>
+    <button (click)="closeModal()">{{ 'NO' | translate }}</button>
   </div>
 </div>

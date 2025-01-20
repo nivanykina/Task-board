@@ -1,7 +1,12 @@
 {
   "title": "Список задач",
   "deleteButtonTitle": "Удалить",
-  "addButtonTitle": "Добавить задачу",
+  "addTaskButtonTitle": "Добавить задачу",
+  "userSelectionTitle": "Выбор пользователя",
+  "addUserButton": "Добавить нового пользователя",
+  "deleteUserButton": "Удалить пользователя",
+  "loginWithYandexButton": "Войти через Яндекс",
+  "addUserButtonTitle": "Добавить пользователя",
   "taskCreatedSuccess": "Задача \"{{task}}\" успешно создана!",
   "taskDeletedSuccess": "Задача успешно удалена!",
   "taskCompleted": "Задача отмечена как завершенная!",
@@ -76,5 +81,12 @@
     "SAVE": "Сохранить",
     "CREATE": "Создать встречу",
     "CREATE_TITLE": "Создание встречи"
-  }
+  },
+  "ADD_USER": "Добавить пользователя",
+  "DELETE_USER": "Удалить пользователя",
+  "CONFIRM_DELETE": "Вы уверены, что хотите удалить {{name}}?",
+  "YES": "Да",
+  "NO": "Нет",
+  "fullName": "ФИО",
+  "login": "Логин"
 }

@@ -1,6 +1,11 @@
 {
   "title": "Списак задатака",
   "deleteButtonTitle": "Избриши",
+  "addUserButtonTitle": "Додај корисника",
+  "userSelectionTitle": "Избор корисника",
+  "addUserButton": "Додај новог корисника",
+  "deleteUserButton": "Избриши корисника",
+  "loginWithYandexButton": "Пријави се преко Јандекса",
   "addButtonTitle": "Додај задатак",
   "taskCreatedSuccess": "Задатак \"{{task}}\" је успешно креиран!",
   "taskDeletedSuccess": "Задатак је успешно избрисан!",
@@ -76,5 +81,12 @@
     "SAVE": "Сачувај",
     "CREATE": "Направите састанак",
     "CREATE_TITLE": "Направите састанак"
-  }
+  },
+  "ADD_USER": "Додај корисника",
+  "DELETE_USER": "Избриши корисника",
+  "CONFIRM_DELETE": "Да ли сте сигурни да желите да избришете {{name}}?",
+  "YES": "Да",
+  "NO": "Не",
+  "fullName": "Пуно име",
+  "login": "Пријава"
 }

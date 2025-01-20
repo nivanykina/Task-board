@@ -6,13 +6,14 @@ import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { YandexAuthService } from '../../services/yandex-auth.service';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'app-user-selection',
   templateUrl: './user-selection.component.html',
   styleUrls: ['./user-selection.component.css'],
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
 })
 export class UserSelectionComponent implements OnInit, OnDestroy {
   users: User[] = [];
@@ -23,6 +24,7 @@ export class UserSelectionComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private authService: AuthService,
     private yandexAuthService: YandexAuthService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {

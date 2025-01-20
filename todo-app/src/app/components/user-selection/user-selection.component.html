@@ -1,6 +1,6 @@
 <div class="app-container">
   <div class="user-selection-container main-content">
-    <h2>Выбор пользователя</h2>
+    <h2>{{ 'userSelectionTitle' | translate }}</h2>
     <div class="user-cards">
       <div
         *ngFor="let user of users"
@@ -13,11 +13,11 @@
       </div>
     </div>
     <div class="buttons">
-      <button (click)="navigateTo('add')">Добавить нового пользователя</button>
-      <button (click)="navigateTo('delete')">Удалить пользователя</button>
+      <button (click)="navigateTo('add')">{{ 'addUserButton' | translate }}</button>
+      <button (click)="navigateTo('delete')">{{ 'deleteUserButton' | translate }}</button>
       <button class="ya-auth-button" (click)="loginWithYandex()">
         <img src="assets/yandex-icon.svg" alt="Yandex Icon" class="ya-icon" />
-        Войти через Яндекс
+        {{ 'loginWithYandexButton' | translate }}
       </button>
     </div>
   </div>

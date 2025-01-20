@@ -1,3 +1,6 @@
+<div *ngIf="isLoading">
+  <app-loading-spinner class="loading-spinner"></app-loading-spinner>
+</div>
 <div class="calendar">
   <h1>{{ 'CALENDAR.CALENDAR_TITLE' | translate }}</h1>
   <ng-container *ngIf="events$ | async as events">

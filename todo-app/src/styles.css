@@ -291,15 +291,15 @@ button:hover {
   color: var(--text-color);
 }
 
-.toast-container {
-  position: fixed;
-  top: 75px;
-  right: 20px;
-  z-index: 1000;
-  transition: all 0.5s ease-in-out;
+.toast-container .toast.toast-success {
+  background-color: rgba(0, 128, 0, 0.75) !important;
 }
 
-.toast {
+.toast-container .toast.toast-error {
+  background-color: rgba(255, 0, 0, 0.75) !important;
+}
+
+.toast-container .toast {
   color: #ffffff;
   padding: 10px;
   margin-bottom: 10px;
@@ -313,15 +313,7 @@ button:hover {
   align-items: center;
 }
 
-.toast-success {
-  background-color: #4caf50 !important;
-}
-
-.toast-error {
-  background-color: #f44336 !important;
-}
-
-.toast button {
+.toast-container .toast button {
   background: none;
   border: none;
   color: #ffffff;

@@ -72,8 +72,10 @@ body {
 .title {
   font-size: 24px;
   margin-bottom: 10px;
-  color: var(--text-color);
+  color: var(--text-h-light-color);
+  border-right: none;
 }
+
 
 .task-list {
   list-style-type: none;
