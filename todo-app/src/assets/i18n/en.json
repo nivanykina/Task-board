@@ -6,6 +6,7 @@
   "deleteUserButton": "Delete User",
   "loginWithYandexButton": "Login with Yandex",
   "addUserButtonTitle": "Add user",
+  "addButtonTitle" : "Add",
   "CONFIRM_DELETE": "Are you sure you want to delete {{name}}?",
   "YES": "Yes",
   "NO": "No",

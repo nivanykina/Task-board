@@ -44,7 +44,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    console.log('ngOnInit called - CalendarComponent');
     this.initializeLoader();
     this.loadMeetings();
 

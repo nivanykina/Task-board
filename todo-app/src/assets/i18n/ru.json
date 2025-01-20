@@ -2,6 +2,7 @@
   "title": "Список задач",
   "deleteButtonTitle": "Удалить",
   "addTaskButtonTitle": "Добавить задачу",
+  "addButtonTitle" : "Добавить",
   "userSelectionTitle": "Выбор пользователя",
   "addUserButton": "Добавить нового пользователя",
   "deleteUserButton": "Удалить пользователя",
