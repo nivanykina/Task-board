@@ -8,14 +8,23 @@
   >
     <span class="tooltip">{{
       selectedItemId === item.id ? hideDescriptionText : showDescriptionText
-      }}</span>
-    <span>{{ item.text }}</span>
+    }}</span>
+    <span>{{ item.name }}</span>
+    <span class="task-status">{{ item.status | translate }}</span>
   </li>
   <textarea
     *ngIf="selectedItemId === item.id"
     class="task-description"
     [(ngModel)]="item.description"
   ></textarea>
+  <div class="task-details">
+    <p><strong>Estimate:</strong> {{ item.estimate }}</p>
+    <p><strong>Assignee:</strong> {{ item.assignee }}</p>
+    <p><strong>Reporter:</strong> {{ item.reporter }}</p>
+    <p><strong>Labels:</strong> {{ item.labels.join(', ') }}</p>
+    <p><strong>Sprint:</strong> {{ item.sprint }}</p>
+    <p><strong>Priority:</strong> {{ item.priority }}</p>
+  </div>
   <app-button
     [title]="deleteButtonTitle"
     [buttonClasses]="{ 'button--delete': true }"

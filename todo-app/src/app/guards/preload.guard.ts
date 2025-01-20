@@ -15,7 +15,9 @@ export class PreloadGuard implements CanActivate {
 
     return of(true).pipe(
       tap(() => {
-        this.loaderService.hideLoader();
+        setTimeout(() => {
+          this.loaderService.hideLoader();
+        }, 1000);
       }),
     );
   }

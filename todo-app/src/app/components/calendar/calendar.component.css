@@ -1,0 +1,27 @@
+.calendar {
+  background-color: #cec7c7;
+  color: #000;
+}
+
+.meetings-list {
+  background-color: #ffffff;
+  color: #000;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.meetings-list-item {
+  padding: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+  transition: background-color 0.3s;
+}
+
+.meetings-list-item:hover {
+  background-color: #e0f7fa;
+}
+
+.meetings-list-item:last-child {
+  border-bottom: none;
+}

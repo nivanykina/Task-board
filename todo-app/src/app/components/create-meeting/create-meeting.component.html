@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>{{ 'MEETING.CREATE_TITLE' | translate }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="meetingForm" (ngSubmit)="onSubmit()">
+    <label>
+      {{ 'TASK.NAME' | translate }}:
+      <input formControlName="name">
+    </label>
+    <label>
+      {{ 'TASK.DESCRIPTION' | translate }}:
+      <textarea formControlName="description"></textarea>
+    </label>
+    <label>
+      {{ 'TASK.ESTIMATE_PLACEHOLDER' | translate }}:
+      <input formControlName="startDate" type="datetime-local">
+    </label>
+    <label>
+      {{ 'TASK.ASSIGNEE' | translate }}:
+      <mat-form-field>
+        <mat-select formControlName="userIds" multiple>
+          <mat-option *ngFor="let user of users" [value]="user.id">{{ user.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </label>
+  </form>
+</div>
+<div class="actions-container">
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()" appTooltip="{{ 'MEETING.CANCEL' | translate }}" class="cancel-button">{{ 'MEETING.CANCEL' | translate }}</button>
+    <button mat-button type="button" [disabled]="!meetingForm.valid" (click)="onSubmit()" appTooltip="{{ 'MEETING.CREATE' | translate }}" class="create-button">{{ 'MEETING.CREATE' | translate }}</button>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 <app-task-control-panel
+  [filterOptions]="filterOptions"
   (filterChange)="applyFilter($event)"
 ></app-task-control-panel>
 <div class="outer-container">
@@ -17,10 +18,10 @@
             <input
               type="checkbox"
               class="custom-checkbox"
-              [checked]="task.status"
-              (change)="toggleStatus(task)"
+              [checked]="task.status === 'completedTitle'"
+              (change)="toggleStatus(task, $event)"
             />
-            <span class="task-text">{{ task.text }}</span>
+            <span class="task-text">{{ task.name }}</span>
             <div class="button-container">
               <app-button
                 [buttonClasses]="{ 'button--delete': true }"

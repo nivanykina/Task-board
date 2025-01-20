@@ -1,92 +1,128 @@
+:root {
+  --bg-color: #1e1e1e;
+  --text-color: #000000;
+  --text-h-color: rgb(255, 255, 255);
+  --text-h-light-color: #ffffff;
+  --border-color: #3a3a3a;
+  --box-shadow-color: rgba(0, 0, 0, 0.5);
+  --task-bg-color: #2a2a2a;
+  --task-hover-bg-color: #3a3a3a;
+  --save-button-bg-color: #008000;
+  --save-button-hover-bg-color: rgba(0, 128, 0, 0.8);
+  --save-button-active-bg-color: rgba(0, 77, 0, 0.8);
+  --save-button-disabled-bg-color: #cccccc;
+  --light-border-color: #dcdcdc;
+  --field-bg-color: #cec7c7;
+}
+
 .app-task-details {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--light-border-color);
   border-radius: 8px;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--task-bg-color);
+  box-shadow: 0 0 10px var(--box-shadow-color);
   margin: 0 auto 20px;
   box-sizing: border-box;
   max-width: 700px;
   text-align: left;
+  color: var(--text-color);
+  position: relative;
+}
+
+.app-task-details:hover {
+  background-color: var(--task-hover-bg-color);
 }
 
 .app-task-details h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #333333;
+  font-size: 16px;
+  color: var(--text-h-light-color) !important;
+  margin: 5px 0;
 }
 
 .app-task-details p {
   font-size: 16px;
-  color: #666666;
+  color: var(--text-h-color);
+  margin: 5px 0;
 }
 
 .app-task-description {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-  background-color: #f9f9f9;
-  margin-bottom: 5px;
-  border-radius: 4px;
-  box-sizing: border-box;
-  min-width: 200px;
-  min-height: 56px;
-  margin-left: 10px;
-  margin-right: 10px;
-  text-wrap: normal;
-  text-align: left;
+  background-color: #cec7c7;
+  padding: 15px;
+  border-radius: 8px;
+  color: var(--text-color);
 }
 
-.app-task-description.ng-star-inserted {
-  height: auto;
-  text-align: left;
+.app-task-edit-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: var(--task-hover-bg-color);
+  padding: 4px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .app-edit-task-form {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 100%;
+  margin-top: 20px;
 }
 
-.app-edit-fields {
-  display: flex;
-  gap: 5px;
+.app-edit-task-field {
   width: 100%;
-  align-items: center;
+  margin-bottom: 15px;
 }
 
 .app-button-group {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 10px;
   margin-top: 10px;
 }
 
-.app-button-group .app-button--save {
-  background-color: #008000;
-  color: #ffffff;
+.app-edit-task-field mat-form-field {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--field-bg-color);
+}
+
+.app-button--save {
+  background-color: var(--save-button-bg-color);
+  color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
-  min-height: 56px;
 }
 
-.app-button-group .app-button--save:hover {
-  background-color: #006400;
+.app-button--save:hover {
+  background-color: rgba(0, 128, 0, 0.8);
 }
 
-.app-button-group .app-button--save:active {
-  background-color: #004d00;
+.app-button--save:active {
+  background-color: rgba(0, 77, 0, 0.8);
 }
 
-.app-button-group .app-button--save:disabled {
-  background-color: #cccccc;
+.app-button--save:disabled {
+  background-color: var(--save-button-disabled-bg-color);
   cursor: not-allowed;
+}
+
+.app-button--cancel {
+  background-color: var(--border-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.app-button--cancel:hover {
+  background-color: rgba(58, 58, 58, 0.8);
+}
+
+.app-button--cancel:active {
+  background-color: rgba(0, 0, 0, 0.5);
 }

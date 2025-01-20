@@ -1,0 +1,91 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #121212;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+input, textarea, select, .mat-form-field {
+  padding: 8px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #333;
+  color: #ffffff;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button[mat-button]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.cancel-button {
+  background-color: #838181;
+  color: #ffffff;
+}
+
+.create-button {
+  background-color: #4caf50;
+  color: #ffffff;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+mat-dialog-content {
+  max-height: 80vh;
+  overflow-y: auto;
+  background-color: #cec7c7;
+}
+
+.mat-dialog-container {
+  background-color: #cec7c7;
+}
+
+.tooltip {
+  position: absolute;
+  padding: 8px;
+  background: #333;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 1000;
+  display: none;
+  pointer-events: none;
+}
+
+.actions-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+}

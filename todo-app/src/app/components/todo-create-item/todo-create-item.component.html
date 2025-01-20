@@ -1,30 +1,109 @@
 <div class="input-container">
   <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()" class="input-block">
-    <mat-form-field class="task-input-field">
-      <input
-        matInput
-        class="task-input"
-        formControlName="newTask"
-        [placeholder]="newTaskPlaceholder"
-        i18n-placeholder="@@newTaskPlaceholder"
-      />
-    </mat-form-field>
-    <mat-form-field class="task-input-field">
-      <textarea
-        matInput
-        class="task-input"
-        formControlName="newDescription"
-        [placeholder]="taskDescriptionPlaceholder"
-        i18n-placeholder="@@newDescriptionPlaceholder"
-      ></textarea>
-    </mat-form-field>
-    <app-button
-      [disabled]="addTaskForm.invalid"
-      [buttonClasses]="{ 'button--add': true }"
-      tooltipText="Add this task"
-      i18n-tooltipText="@@addTaskTooltip"
-    >
-      {{ addButtonTitle }}
-    </app-button>
+    <div class="row">
+      <mat-form-field class="task-input-field">
+        <input
+          matInput
+          class="task-input"
+          formControlName="name"
+          [placeholder]="newTaskPlaceholder"
+          i18n-placeholder="@@newTaskPlaceholder"
+        />
+      </mat-form-field>
+      <mat-form-field class="task-input-field">
+        <textarea
+          matInput
+          class="task-input"
+          formControlName="description"
+          [placeholder]="taskDescriptionPlaceholder"
+          i18n-placeholder="@@newDescriptionPlaceholder"
+        ></textarea>
+      </mat-form-field>
+      <mat-form-field class="task-input-field">
+        <mat-label>{{ 'TASK.STATUS' | translate }}</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="backlogTitle">{{
+            'TASK.STATUS_BACKLOG' | translate
+            }}</mat-option>
+          <mat-option value="inProgressTitle">{{
+            'TASK.STATUS_IN_PROGRESS' | translate
+            }}</mat-option>
+          <mat-option value="completedTitle">{{
+            'TASK.STATUS_COMPLETED' | translate
+            }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="task-input-field">
+        <mat-label>{{ 'TASK.ESTIMATE' | translate }}</mat-label>
+        <input
+          matInput
+          class="task-input"
+          formControlName="estimate"
+          placeholder="{{ 'TASK.ESTIMATE' | translate }}"
+        />
+      </mat-form-field>
+      <mat-form-field class="task-input-field">
+        <mat-label>{{ 'TASK.ASSIGNEE' | translate }}</mat-label>
+        <mat-select formControlName="assignee">
+          <mat-option *ngFor="let user of users" [value]="user.id">
+            {{ user.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="task-input-field">
+        <mat-label>{{ 'TASK.REPORTER' | translate }}</mat-label>
+        <mat-select formControlName="reporter">
+          <mat-option *ngFor="let user of users" [value]="user.id">
+            {{ user.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="task-input-field">
+        <mat-label>{{ 'TASK.LABELS' | translate }}</mat-label>
+        <input
+          matInput
+          class="task-input"
+          formControlName="labels"
+          placeholder="{{ 'TASK.LABELS' | translate }} (comma separated)"
+        />
+      </mat-form-field>
+      <mat-form-field class="task-input-field">
+        <mat-label>{{ 'TASK.SPRINT' | translate }}</mat-label>
+        <input
+          matInput
+          class="task-input"
+          formControlName="sprint"
+          placeholder="{{ 'TASK.SPRINT' | translate }}"
+        />
+      </mat-form-field>
+      <mat-form-field class="task-input-field">
+        <mat-label>{{ 'TASK.PRIORITY' | translate }}</mat-label>
+        <mat-select formControlName="priority">
+          <mat-option value="Low">{{
+            'TASK.PRIORITY_LOW' | translate
+            }}</mat-option>
+          <mat-option value="Medium">{{
+            'TASK.PRIORITY_MEDIUM' | translate
+            }}</mat-option>
+          <mat-option value="High">{{
+            'TASK.PRIORITY_HIGH' | translate
+            }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <app-button
+        [disabled]="addTaskForm.invalid"
+        [buttonClasses]="{ 'button--add': true }"
+        tooltipText="{{ 'addTaskTooltip' | translate }}"
+        i18n-tooltipText="@@addTaskTooltip"
+      >
+        {{ addButtonTitle }}
+      </app-button>
+    </div>
   </form>
 </div>

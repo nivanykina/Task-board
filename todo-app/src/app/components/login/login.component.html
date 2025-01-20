@@ -1,0 +1,58 @@
+<div>
+  <h2>{{ 'title' | translate }}</h2>
+  <div *ngIf="isLoggedIn()">
+    <p>{{ 'welcomeUser' | translate }} {{ currentUser?.name }}</p>
+    <button (click)="logout()">{{ 'logoutButton' | translate }}</button>
+  </div>
+  <div *ngIf="!isLoggedIn()">
+    <h3>{{ 'selectUser' | translate }}</h3>
+    <ul>
+      <li
+        *ngFor="let user of users"
+        (click)="loginForm.patchValue({ userName: user.name }); login()"
+      >
+        {{ user.name }}
+      </li>
+    </ul>
+    <h3>{{ 'newUser' | translate }}</h3>
+    <form [formGroup]="loginForm" (ngSubmit)="register()">
+      <input
+        formControlName="userName"
+        placeholder="{{ 'newTaskPlaceholder' | translate }}"
+      />
+      <div
+        *ngIf="
+          loginForm.get('userName')?.invalid &&
+          loginForm.get('userName')?.touched
+        "
+      >
+        <small *ngIf="loginForm.get('userName')?.hasError('required')">{{
+          'fillFieldsTooltip' | translate
+        }}</small>
+        <small *ngIf="loginForm.get('userName')?.hasError('minlength')">{{
+          'errorOccurred' | translate
+        }}</small>
+      </div>
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="{{ 'taskDescriptionPlaceholder' | translate }}"
+      />
+      <div
+        *ngIf="
+          loginForm.get('password')?.invalid &&
+          loginForm.get('password')?.touched
+        "
+      >
+        <small *ngIf="loginForm.get('password')?.hasError('required')">{{
+          'fillFieldsTooltip' | translate
+        }}</small>
+        <small *ngIf="loginForm.get('password')?.hasError('minlength')">{{
+          'errorOccurred' | translate
+        }}</small>
+      </div>
+      <button type="submit">{{ 'addButtonTitle' | translate }}</button>
+    </form>
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+  </div>
+</div>

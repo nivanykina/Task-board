@@ -1,27 +1,128 @@
 {
   "tasks": [
     {
-      "id": "dac17cd3-f706-4369-b142-f5272842aeb7",
-      "text": "Папа, купи рыбу на ужин",
-      "description": "Дикий лосось",
-      "status": false
+      "id": "6bca2e86-a53c-42fd-9961-38b5dcd29bf9",
+      "name": "Я купил жигуль",
+      "description": "Я его ремонтирую",
+      "status": "inProgressTitle",
+      "estimate": "20",
+      "assignee": "8eb65463-c47c-421e-a8b8-bd177c1ff964",
+      "reporter": "8eb65463-c47c-421e-a8b8-bd177c1ff964",
+      "labels": [
+        "жигуль"
+      ],
+      "sprint": "1",
+      "priority": "Medium"
     },
     {
-      "id": "9dc318c9-cf22-43cf-95b3-3eb0dc319379",
-      "text": "Новая интересная задача!",
-      "description": "Я ее делаю со слезами на глазах",
-      "status": true
+      "id": "38e3da73-dc73-40ef-81cd-cddb3b019f98",
+      "name": "Я купил краски",
+      "description": "Планирую начать рисовать",
+      "status": "backlogTitle",
+      "estimate": "1",
+      "assignee": "8eb65463-c47c-421e-a8b8-bd177c1ff964",
+      "reporter": "8eb65463-c47c-421e-a8b8-bd177c1ff964",
+      "labels": [
+        "творчество"
+      ],
+      "sprint": "2",
+      "priority": "Low",
+      "editStatus": "inProgressTitle"
     },
     {
-      "id": "0938e762-3a4a-4209-a87f-b25a62b26582",
-      "text": "Приготовить чак-чак",
-      "description": "Рецепт: не помню",
-      "status": true
+      "id": "36144e78-ebbb-4688-8ed9-7a995cdea68c",
+      "name": "Я купил таблетки",
+      "description": "Седативное после всех испытаний",
+      "status": "completedTitle",
+      "estimate": "5",
+      "assignee": "8eb65463-c47c-421e-a8b8-bd177c1ff964",
+      "reporter": "8eb65463-c47c-421e-a8b8-bd177c1ff964",
+      "labels": [
+        "здоровье"
+      ],
+      "sprint": "3",
+      "priority": "High"
     },
     {
-      "id": "10430839-d574-412f-929f-994ed3823233",
-      "text": "Дабранач! ",
-      "description": "Запрашаю на дранікі ды калдуны!"
+      "id": "e6a94a20-073c-4a9c-b10c-f7607abfb9a1",
+      "name": "Я приготовил борщ",
+      "description": "С помпушками",
+      "status": "completedTitle",
+      "estimate": "12",
+      "assignee": "6d03c7ba-ba22-48d1-8a60-7e6ab2662a5f",
+      "reporter": "6d03c7ba-ba22-48d1-8a60-7e6ab2662a5f",
+      "labels": [
+        "еда"
+      ],
+      "sprint": "12",
+      "priority": "Low"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Mock User 1",
+      "login": "mockUser1"
+    },
+    {
+      "id": "2",
+      "name": "Mock User 2",
+      "login": "mockUser2"
+    },
+    {
+      "id": "3",
+      "name": "Mock User 3",
+      "login": "mockUser3"
+    },
+    {
+      "id": "ad7d5787-db10-4c71-8f39-11c80d406e3d",
+      "name": "Yummy",
+      "login": "Yummy"
+    },
+    {
+      "id": "e1bb7387-7cf3-4d8f-a8e1-ff71dbcabf23",
+      "name": "Анастасия Иваныкина"
+    }
+  ],
+  "meetings": [
+    {
+      "id": "1",
+      "name": "Team Meeting",
+      "description": "Discuss project updates",
+      "userIds": [
+        "8eb65463-c47c-421e-a8b8-bd177c1ff964",
+        "ad7d5787-db10-4c71-8f39-11c80d406e3d"
+      ],
+      "startDate": "2023-04-10T10:00:00"
+    },
+    {
+      "id": "e2a3",
+      "name": "Новая встреча 2",
+      "description": "Для теста превьюшки.",
+      "userIds": [
+        "ad7d5787-db10-4c71-8f39-11c80d406e3d",
+        "8eb65463-c47c-421e-a8b8-bd177c1ff964"
+      ],
+      "startDate": "2025-01-21T00:00"
+    },
+    {
+      "id": "9210",
+      "name": "Новая встреча 3",
+      "description": "Просто поболтать о вечном",
+      "userIds": [
+        "ad7d5787-db10-4c71-8f39-11c80d406e3d",
+        "8eb65463-c47c-421e-a8b8-bd177c1ff964"
+      ],
+      "startDate": "2025-01-22T00:00"
+    },
+    {
+      "id": "0501",
+      "name": "Новая встреча",
+      "description": "Доброе утро",
+      "userIds": [
+        "8eb65463-c47c-421e-a8b8-bd177c1ff964"
+      ],
+      "startDate": "2025-01-21T03:00"
     }
   ]
 }

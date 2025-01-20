@@ -1,13 +1,329 @@
 @import 'stylesheets/checkboxes.css';
+@import '../node_modules/angular-calendar/css/angular-calendar.css';
 
-.mat-form-field {
-  width: 100%;
+:root {
+  --bg-color: #121212;
+  --text-color: rgba(9, 9, 9, 0.84);
+  --dark-text-color: #1e1e1e;
+  --side-panel-bg-color: #1e1e1e;
+  --side-panel-hover-color: #87cefa;
+  --button-bg-color: #3a3a3a;
+  --button-hover-bg-color: #6c6c6c;
+  --task-details-bg-color: #3a3a3a;
+  --mdc-filled-text-field-container-color: #cec7c7;
+  --mat-app-surface-variant: #2a2a2a;
+  --text-h-light-color: #ffffff;
+}
+html {
+  --mdc-dialog-container-color: #3a3a3a;
 }
 
-.mat-form-field .mat-mdc-form-field-flex {
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+:host, app-root, .app-container, .content, .calendar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+.side-panel {
+  width: 150px;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  height: calc(100% - 60px);
+  background-color: var(--side-panel-bg-color);
+  color: var(--text-color);
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content.collapsed {
+  margin-left: 150px;
+}
+
+.side-panel.collapsed {
+  width: 50px;
+}
+
+.side-panel nav {
+  margin-top: 10px;
+}
+
+.side-panel nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.side-panel nav ul li {
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 40px;
+}
+
+.side-panel nav ul li:hover {
+  background-color: var(--side-panel-hover-color);
+  border-radius: 4px;
+}
+
+.side-panel nav ul li a {
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  color: var(--text-color);
+  font-weight: bold;
+  width: calc(100% - 40px);
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.side-panel.collapsed nav ul li a {
+  padding: 5px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: color 0.3s;
+  color: var(--text-color);
+  padding: 5px;
+  z-index: 1000;
+}
+
+.toggle-button:hover {
+  color: var(--side-panel-hover-color);
+}
+
+@media (max-width: 768px) {
+  .side-panel {
+    width: 150px;
+  }
+
+  .side-panel.collapsed {
+    width: 40px;
+  }
+
+  .content.collapsed {
+    margin-left: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .side-panel {
+    width: 100px;
+  }
+
+  .side-panel.collapsed {
+    width: 30px;
+  }
+
+  .content.collapsed {
+    margin-left: 100px;
+  }
+}
+
+.user-selection-container {
+  text-align: center;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.mat-form-field .mat-mdc-form-field-infix {
-  width: 100%;
+.user-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.user-card {
+  background-color: var(--side-panel-bg-color);
+  padding: 20px;
+  border-radius: 8px;
+  width: 150px;
+  cursor: pointer;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.user-card img {
+  width: 40px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--button-bg-color);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+.task-parameter {
+  border: 1px solid #ffffff;
+  background-color: #cec7c7;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  color: var(--dark-text-color);
+}
+
+.task-details-container {
+  background-color: var(--task-details-bg-color);
+  border-radius: 4px;
+}
+
+.mat-dialog-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #121212;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.app-task-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid var(--light-border-color);
+  border-radius: 8px;
+  background-color: var(--task-bg-color);
+  box-shadow: 0 0 10px var(--box-shadow-color);
+  margin: 0 auto 20px;
+  box-sizing: border-box;
+  max-width: 700px;
+  text-align: left;
+  color: var(--text-color);
+  position: relative;
+}
+
+.app-task-details:hover {
+  background-color: var(--task-hover-bg-color);
+}
+
+.app-task-details h2 {
+  font-size: 16px;
+  color: var(--text-h-light-color) !important;
+  margin: 5px 0;
+}
+
+.app-task-details p {
+  font-size: 16px;
+  color: var(--text-h-color);
+  margin: 5px 0;
+}
+
+.app-task-description {
+  background-color: #cec7c7;
+  padding: 15px;
+  border-radius: 8px;
+  color: var(--text-color);
+}
+
+.toast-container .toast.toast-success {
+  background-color: rgba(0, 128, 0, 0.75) !important;
+}
+
+.toast-container .toast.toast-error {
+  background-color: rgba(255, 0, 0, 0.75) !important;
+}
+
+.toast-container .toast {
+  color: #ffffff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeIn 0.5s forwards;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toast-container .toast button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

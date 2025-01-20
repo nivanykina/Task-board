@@ -1,6 +1,9 @@
 <mat-form-field>
   <mat-label>{{ filterTitle | translate }}</mat-label>
-  <mat-select [value]="selectedFilter" (selectionChange)="onFilterChange($event.value)">
+  <mat-select
+    [value]="selectedFilter"
+    (selectionChange)="onFilterChange($event.value)"
+  >
     <mat-option *ngFor="let option of filterOptions" [value]="option.value">
       {{ option.label }}
     </mat-option>

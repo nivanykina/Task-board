@@ -1,15 +1,26 @@
+:root {
+  --bg-color: #1e1e1e;
+  --text-color: #030303;
+  --border-color: #3a3a3a;
+  --tooltip-bg-color: #333333;
+  --tooltip-text-color: #ffffff;
+  --task-bg-color: #2a2a2a;
+  --task-hover-bg-color: #3a3a3a;
+}
+
 .task-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: 10px;
-  border-bottom: 1px solid #cccccc;
-  background-color: #f9f9f9;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--task-bg-color);
   margin-bottom: 5px;
   border-radius: 4px;
   box-sizing: border-box;
   position: relative;
+  color: var(--text-color);
 }
 
 .task-item {
@@ -18,12 +29,17 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  border-bottom: 1px solid #cccccc;
-  background-color: #f9f9f9;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--task-bg-color);
   margin-bottom: 5px;
   border-radius: 4px;
   box-sizing: border-box;
   position: relative;
+  color: var(--text-color);
+}
+
+.task-item:hover {
+  background-color: var(--task-hover-bg-color);
 }
 
 .task-item:hover .tooltip {
@@ -32,8 +48,8 @@
 
 .tooltip {
   position: absolute;
-  background: #333333;
-  color: #ffffff;
+  background: var(--tooltip-bg-color);
+  color: var(--tooltip-text-color);
   padding: 5px 10px;
   border-radius: 4px;
   top: -30px;
@@ -46,4 +62,14 @@
 
 .button--delete {
   margin-left: 10px;
+  background-color: #ff0000;
+  color: var(--text-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button--delete:hover {
+  background-color: #cc0000;
 }

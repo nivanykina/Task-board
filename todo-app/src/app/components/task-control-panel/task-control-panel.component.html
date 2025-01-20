@@ -1,5 +1,9 @@
-<app-task-filter
-  [filterTitle]="filterTitle"
-  [filterOptions]="filterOptions"
-  (filterChange)="onFilterChange($event)"
-></app-task-filter>
+<div class="control-panel">
+  <div class="filter-item" *ngFor="let filterType of objectKeys(filterOptions)">
+    <app-task-filter
+      [filterTitle]="filterTitles[filterType]"
+      [filterOptions]="filterOptions[filterType]"
+      (filterChange)="onFilterChange(filterType, $event)"
+    ></app-task-filter>
+  </div>
+</div>

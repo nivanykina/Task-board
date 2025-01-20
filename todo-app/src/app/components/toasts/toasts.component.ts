@@ -14,7 +14,7 @@ import { tap } from 'rxjs/operators';
 export class ToastsComponent implements OnInit, OnDestroy {
   public toasts: string[] = [];
   private toastSubscription!: Subscription;
-  private successMessages = ['успешно создана'];
+  private successMessages = ['успешно создана', 'Задача отмечена как завершенная!', 'Задача отмечена как незавершенная!', 'Задача успешно обновлена!'];
   private errorMessages = ['Произошла ошибка', 'успешно удалена'];
 
   constructor(private toastService: ToastService) {}
@@ -50,12 +50,13 @@ export class ToastsComponent implements OnInit, OnDestroy {
   }
 
   public getToastClass(toast: string): string {
+    let toastClass = '';
     if (this.successMessages.some((msg) => toast.includes(msg))) {
-      return 'toast-success';
+      toastClass = 'toast-success';
+    } else if (this.errorMessages.some((msg) => toast.includes(msg))) {
+      toastClass = 'toast-error';
     }
-    if (this.errorMessages.some((msg) => toast.includes(msg))) {
-      return 'toast-error';
-    }
-    return '';
+    return toastClass;
   }
+
 }

@@ -1,3 +1,19 @@
+.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+
 .button-common {
   padding: 0 20px;
   font-size: 16px;
@@ -45,12 +61,16 @@
 
 .app-container {
   display: flex;
-  background: #f0f0f0;
+  background: var(--bg-color);
+  height: 100vh;
+  overflow: hidden;
 }
 
 .side-panel {
   width: 250px;
   transition: width 0.3s;
+  height: calc(100vh - 60px);
+  overflow: hidden;
 }
 
 .side-panel.collapsed {
@@ -59,12 +79,16 @@
 
 .content {
   flex-grow: 1;
-  margin-left: 200px;
-  transition: margin-left 0.3s;
+  overflow-y: auto;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px);
+  padding-left: 250px;
 }
 
 .side-panel.collapsed + .content {
-  margin-left: 50px;
+  padding-left: 50px;
 }
 
 @media (max-width: 768px) {
@@ -77,11 +101,12 @@
   }
 
   .content {
-    margin-left: 150px;
+    padding-left: 150px;
+
   }
 
   .side-panel.collapsed + .content {
-    margin-left: 40px;
+    padding-left: 40px;
   }
 }
 
@@ -95,10 +120,10 @@
   }
 
   .content {
-    margin-left: 100px;
+    padding-left: 100px;
   }
 
   .side-panel.collapsed + .content {
-    margin-left: 30px;
+    padding-left: 30px;
   }
 }

@@ -1,37 +1,97 @@
 <div class="app-task-details">
-  <div *ngIf="task">
-    <h2>{{ task.text }}</h2>
-  </div>
+  <h2>{{ task.name }}</h2>
   <ng-container *ngIf="!isEditing; else editMode">
-    <div (dblclick)="enableEditing()" *ngIf="task" class="app-task-description">
-      <span>{{ task.description }}</span>
+    <div *ngIf="task" class="app-task-description">
+      <p>{{ 'TASK.DESCRIPTION' | translate }}: {{ task.description }}</p>
+      <p>{{ 'TASK.STATUS' | translate }}: {{ getStatusTranslation(task.status) | translate }}</p>
+      <p>{{ 'TASK.ESTIMATE' | translate }}: {{ task.estimate }}</p>
+      <p>{{ 'TASK.ASSIGNEE' | translate }}: {{ getAssigneeName(task.assignee) }}</p>
+      <p>{{ 'TASK.REPORTER' | translate }}: {{ getReporterName(task.reporter) }}</p>
+      <p>{{ 'TASK.LABELS' | translate }}: {{ task.labels.join(', ') }}</p>
+      <p>{{ 'TASK.SPRINT' | translate }}: {{ task.sprint }}</p>
+      <p>{{ 'TASK.PRIORITY' | translate }}: {{ 'TASK.PRIORITY_' + task.priority.toUpperCase() | translate }}</p>
     </div>
+    <img src="assets/pencil.png" alt="Edit" class="app-task-edit-icon" (click)="enableEditing()" />
   </ng-container>
   <ng-template #editMode>
-    <form
-      [formGroup]="editTaskForm"
-      class="app-edit-task-form"
-      (ngSubmit)="saveTask()"
-    >
+    <form [formGroup]="editTaskForm" class="app-edit-task-form" (ngSubmit)="saveTask()">
       <div class="app-edit-fields">
-        <input
-          type="checkbox"
-          class="custom-checkbox"
-          formControlName="editStatus"
-        />
         <mat-form-field class="app-edit-task-field">
+          <mat-label>{{ 'TASK.NAME' | translate }}</mat-label>
           <input
             matInput
             formControlName="editTask"
-            placeholder="{{ 'editTaskPlaceholder' | translate }}"
+            [placeholder]="editTaskPlaceholder"
+            (input)="onInputChanged()"
           />
         </mat-form-field>
         <mat-form-field class="app-edit-task-field">
+          <mat-label>{{ 'TASK.DESCRIPTION' | translate }}</mat-label>
           <textarea
             matInput
             formControlName="editDescription"
-            placeholder="{{ 'editDescriptionPlaceholder' | translate }}"
+            [placeholder]="editDescriptionPlaceholder"
+            (input)="onInputChanged()"
           ></textarea>
+        </mat-form-field>
+        <mat-form-field class="app-edit-task-field">
+          <mat-label>{{ 'TASK.STATUS' | translate }}</mat-label>
+          <mat-select formControlName="editStatus">
+            <mat-option value="completedTitle">{{ 'TASK.STATUS_COMPLETED' | translate }}</mat-option>
+            <mat-option value="inProgressTitle">{{ 'TASK.STATUS_IN_PROGRESS' | translate }}</mat-option>
+            <mat-option value="backlogTitle">{{ 'TASK.STATUS_BACKLOG' | translate }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="app-edit-task-field">
+          <mat-label>{{ 'TASK.ESTIMATE' | translate }}</mat-label>
+          <input
+            matInput
+            formControlName="editEstimate"
+            placeholder="{{ 'TASK.ESTIMATE_PLACEHOLDER' | translate }}"
+            (input)="onInputChanged()"
+          />
+        </mat-form-field>
+        <mat-form-field class="app-edit-task-field">
+          <mat-label>{{ 'TASK.ASSIGNEE' | translate }}</mat-label>
+          <mat-select formControlName="editAssignee" (selectionChange)="onInputChanged()">
+            <mat-option *ngFor="let user of users" [value]="user.id">
+              {{ user.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="app-edit-task-field">
+          <mat-label>{{ 'TASK.REPORTER' | translate }}</mat-label>
+          <mat-select formControlName="editReporter" (selectionChange)="onInputChanged()">
+            <mat-option *ngFor="let user of users" [value]="user.id">
+              {{ user.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="app-edit-task-field">
+          <mat-label>{{ 'TASK.LABELS' | translate }}</mat-label>
+          <input
+            matInput
+            formControlName="editLabels"
+            placeholder="{{ 'TASK.LABELS_PLACEHOLDER' | translate }}"
+            (input)="onInputChanged()"
+          />
+        </mat-form-field>
+        <mat-form-field class="app-edit-task-field">
+          <mat-label>{{ 'TASK.SPRINT' | translate }}</mat-label>
+          <input
+            matInput
+            formControlName="editSprint"
+            placeholder="{{ 'TASK.SPRINT_PLACEHOLDER' | translate }}"
+            (input)="onInputChanged()"
+          />
+        </mat-form-field>
+        <mat-form-field class="app-edit-task-field">
+          <mat-label>{{ 'TASK.PRIORITY' | translate }}</mat-label>
+          <mat-select formControlName="editPriority" (selectionChange)="onInputChanged()">
+            <mat-option value="Low">{{ 'TASK.PRIORITY_LOW' | translate }}</mat-option>
+            <mat-option value="Medium">{{ 'TASK.PRIORITY_MEDIUM' | translate }}</mat-option>
+            <mat-option value="High">{{ 'TASK.PRIORITY_HIGH' | translate }}</mat-option>
+          </mat-select>
         </mat-form-field>
         <div class="app-button-group app-edit-mode-buttons">
           <button
@@ -40,6 +100,13 @@
             [disabled]="!editTaskForm.dirty || !editTaskForm.valid"
           >
             {{ 'saveButtonTitle' | translate }}
+          </button>
+          <button
+            type="button"
+            class="app-button--cancel"
+            (click)="cancelEditing()"
+          >
+            {{ 'cancelButtonTitle' | translate }}
           </button>
         </div>
       </div>
