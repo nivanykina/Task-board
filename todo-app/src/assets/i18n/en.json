@@ -56,5 +56,25 @@
   "filterByLabels": "Filter by Labels",
   "filterByReporter": "Filter by Reporter",
   "filterByEstimate": "Filter by Estimate",
-  "filterBySprint": "Filter by Sprint"
+  "filterBySprint": "Filter by Sprint",
+  "calendarLinkText": "Calendar",
+  "CALENDAR": {
+    "CALENDAR_TITLE": "Meeting Calendar",
+    "DAYS": {
+      "SUNDAY": "Sun",
+      "MONDAY": "Mon",
+      "TUESDAY": "Tue",
+      "WEDNESDAY": "Wed",
+      "THURSDAY": "Thu",
+      "FRIDAY": "Fri",
+      "SATURDAY": "Sat"
+    }
+  },
+  "MEETING": {
+    "CANCEL": "Close",
+    "DELETE": "Delete",
+    "SAVE": "Save",
+    "CREATE": "Create meeting",
+    "CREATE_TITLE": "Create meeting"
+  }
 }

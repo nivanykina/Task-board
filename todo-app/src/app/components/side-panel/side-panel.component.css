@@ -5,7 +5,7 @@
   left: 0;
   height: calc(100% - 60px);
   background-color: #2a2a2a;
-  color: var(--text-color);
+  color: #ffffff;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   transition: width 0.3s;
@@ -38,7 +38,7 @@
   display: block;
   text-decoration: none;
   padding: 10px 20px;
-  color: var(--text-color);
+  color: #ffffff;
   font-weight: bold;
   width: 100%;
   box-sizing: border-box;
@@ -67,7 +67,7 @@
   cursor: pointer;
   font-size: 18px;
   transition: color 0.3s;
-  color: var(--text-color);
+  color: #ffffff;
   padding: 5px;
   z-index: 1000;
 }

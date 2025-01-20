@@ -56,5 +56,25 @@
   "filterByLabels": "Филтрирај по етикетама",
   "filterByReporter": "Филтрирај по аутору",
   "filterByEstimate": "Филтрирај по процени",
-  "filterBySprint": "Филтрирај по спринту"
+  "filterBySprint": "Филтрирај по спринту",
+  "calendarLinkText": "Календар",
+  "CALENDAR": {
+    "CALENDAR_TITLE": "Календар састанци",
+    "DAYS": {
+      "SUNDAY": "Нед",
+      "MONDAY": "Пон",
+      "TUESDAY": "Уто",
+      "WEDNESDAY": "Сре",
+      "THURSDAY": "Чет",
+      "FRIDAY": "Пет",
+      "SATURDAY": "Суб"
+    }
+  },
+  "MEETING": {
+    "CANCEL": "Затвори",
+    "DELETE": "Делете",
+    "SAVE": "Сачувај",
+    "CREATE": "Направите састанак",
+    "CREATE_TITLE": "Направите састанак"
+  }
 }

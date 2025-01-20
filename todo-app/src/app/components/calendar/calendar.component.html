@@ -1,0 +1,15 @@
+<div class="calendar">
+  <h1>{{ 'CALENDAR.CALENDAR_TITLE' | translate }}</h1>
+  <ng-container *ngIf="events$ | async as events">
+    <mwl-calendar-month-view
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (dayClicked)="dayClicked($event.day)"
+      (eventClicked)="eventClicked($event.event)">
+    </mwl-calendar-month-view>
+    <div *ngFor="let event of events">
+      <span class="cal-day-badge" (click)="badgeClicked($event, event)">{{ event.title }}</span>
+    </div>
+  </ng-container>
+</div>

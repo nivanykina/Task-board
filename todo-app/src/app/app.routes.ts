@@ -3,6 +3,7 @@ import { ToDoListComponent } from './components/to-do-list/to-do-list.component'
 import { AppToDoItemViewComponent } from './components/app-to-do-item-view/app-to-do-item-view.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BoardComponent } from './components/board/board.component';
+import { CalendarComponent } from './components/calendar/calendar.component'; // Добавим импорт CalendarComponent
 import { PreloadGuard } from './guards/preload.guard';
 import { UserSelectionComponent } from './components/user-selection/user-selection.component';
 import { UserManagementComponent } from './components/user-management/user-management.component';
@@ -18,6 +19,7 @@ export const routes: Routes = [
   },
   { path: 'backlog', component: ToDoListComponent },
   { path: 'board', component: BoardComponent, canActivate: [PreloadGuard] },
+  { path: 'calendar', component: CalendarComponent, canActivate: [PreloadGuard] },
   { path: 'auth/yandex/callback', component: AuthCallbackComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },

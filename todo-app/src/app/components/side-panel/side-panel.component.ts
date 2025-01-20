@@ -28,6 +28,7 @@ export class SidePanelComponent implements OnInit, OnDestroy {
 
   backlogLinkText: string = '';
   boardLinkText: string = '';
+  calendarLinkText: string = '';
 
   constructor(
     private translationService: TranslationService,
@@ -78,6 +79,21 @@ export class SidePanelComponent implements OnInit, OnDestroy {
           },
           error: (err) =>
             console.error('Translation error for boardTitle:', err),
+        }),
+      )
+      .subscribe();
+
+    this.translationService['translate']
+      .get('calendarLinkText')
+      .pipe(
+        takeUntil(this.destroy$),
+        tap({
+          next: (text: string) => {
+            this.calendarLinkText = text;
+            this.changeDetector.markForCheck();
+          },
+          error: (err) =>
+            console.error('Translation error for calendarLinkText:', err),
         }),
       )
       .subscribe();

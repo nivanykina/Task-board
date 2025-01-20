@@ -9,6 +9,12 @@
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   box-sizing: border-box;
+}
+
+.logout-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 }

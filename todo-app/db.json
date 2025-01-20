@@ -26,7 +26,8 @@
         "творчество"
       ],
       "sprint": "2",
-      "priority": "Low"
+      "priority": "Low",
+      "editStatus": "inProgressTitle"
     },
     {
       "id": "36144e78-ebbb-4688-8ed9-7a995cdea68c",
@@ -67,6 +68,51 @@
     {
       "id": "8eb65463-c47c-421e-a8b8-bd177c1ff964",
       "name": "Анастасия Иваныкина"
+    },
+    {
+      "id": "da711db7-cb2e-4e57-9442-9d6bef26fd1d",
+      "name": "Анастасия Иваныкина"
+    }
+  ],
+  "meetings": [
+    {
+      "id": "1",
+      "name": "Team Meeting",
+      "description": "Discuss project updates",
+      "userIds": [
+        "8eb65463-c47c-421e-a8b8-bd177c1ff964",
+        "ad7d5787-db10-4c71-8f39-11c80d406e3d"
+      ],
+      "startDate": "2023-04-10T10:00:00"
+    },
+    {
+      "id": "e2a3",
+      "name": "Новая встреча 2",
+      "description": "Для теста превьюшки.",
+      "userIds": [
+        "ad7d5787-db10-4c71-8f39-11c80d406e3d",
+        "8eb65463-c47c-421e-a8b8-bd177c1ff964"
+      ],
+      "startDate": "2025-01-21T00:00"
+    },
+    {
+      "id": "9210",
+      "name": "Новая встреча 3",
+      "description": "Просто поболтать о вечном",
+      "userIds": [
+        "ad7d5787-db10-4c71-8f39-11c80d406e3d",
+        "8eb65463-c47c-421e-a8b8-bd177c1ff964"
+      ],
+      "startDate": "2025-01-22T00:00"
+    },
+    {
+      "id": "0501",
+      "name": "Новая встреча",
+      "description": "Доброе утро",
+      "userIds": [
+        "8eb65463-c47c-421e-a8b8-bd177c1ff964"
+      ],
+      "startDate": "2025-01-21T03:00"
     }
   ]
 }

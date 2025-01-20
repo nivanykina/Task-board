@@ -16,6 +16,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { UserSelectionComponent } from './components/user-selection/user-selection.component';
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { AuthCallbackComponent } from './components/auth-callback/auth-callback.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { CreateMeetingComponent } from './components/create-meeting/create-meeting.component';
 import { Subscription, lastValueFrom } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
@@ -39,6 +41,8 @@ import { tap, catchError } from 'rxjs/operators';
     UserSelectionComponent,
     UserManagementComponent,
     AuthCallbackComponent,
+    CalendarComponent,
+    CreateMeetingComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],

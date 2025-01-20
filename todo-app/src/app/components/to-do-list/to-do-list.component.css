@@ -1,6 +1,6 @@
 :root {
   --bg-color: #1e1e1e;
-  --text-color: #030303;
+  --text-color: rgba(9, 9, 9, 0.84);
   --border-color: #3a3a3a;
   --box-shadow-color: rgba(0, 0, 0, 0.5);
   --button-bg-color: #3a3a3a;
@@ -26,10 +26,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  height: 100vh;
-  padding-top: 5vh;
+  height: calc(100vh - 60px);
   background-color: var(--bg-color);
   overflow-y: auto;
+  margin-top: 60px;
 }
 
 .task-container {

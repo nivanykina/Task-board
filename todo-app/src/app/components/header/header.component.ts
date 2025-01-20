@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 
 @Component({
@@ -9,4 +10,12 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
   styleUrls: ['./header.component.css'],
   imports: [CommonModule, LanguageSwitcherComponent],
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  constructor(private router: Router) {}
+
+  logout(): void {
+    this.router.navigate(['/login']).catch((err) => {
+      console.error('Navigation error:', err);
+    });
+  }
+}
